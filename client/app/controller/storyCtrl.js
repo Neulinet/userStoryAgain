@@ -22,6 +22,7 @@ angular.module('storyCtrl',['storyService'])
 	};
 	
 	socketIO.on('story',function(data){
+		
 		vm.stories.push(data);
 	})
 })

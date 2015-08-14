@@ -99,8 +99,11 @@ module.exports = function(app, express,io) {
                 creator: req.decoded.id,
                 content: req.body.content
             })
-            story.save(function(err){
+            story.save(function(err,newStory){
                 if (err) {res.send(err); return}
+                console.log('New story here, trying to emit',newStory);
+                console.log('emit',io.emit);
+                io.emit('story',newStory);
                 res.json({message:"New story created"});
             })
         })

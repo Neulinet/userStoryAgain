@@ -7,7 +7,7 @@ var http = require('http');
 var path = require('path');
 
 var async = require('async');
-var socketio = require('socket.io');
+
 var express = require('express');
 var morgan = require("morgan");
 var bodyParser = require("body-parser");
@@ -20,8 +20,8 @@ var mongoose = require('mongoose');
 //  * `port` - The HTTP port to listen on. If `process.env.PORT` is set, _it overrides this value_.
 //
 var router = express();
-var server = http.createServer(router);
-var io = socketio.listen(server);
+var http = require('http').Server(router);
+var io = require('socket.io')(http);
 
 console.log(__dirname+'/client/app/views/index.html');
 
@@ -43,14 +43,14 @@ mongoose.connect(config.database,function(err){
 var messages = [];
 var sockets = [];
 
-router.get('*',function(req, res){
+router.get('/',function(req, res){
   res.sendFile(__dirname+'/client/app/views/index.html');
 })
 
 var api = require('./app/routes/api')(router,express,io);
 router.use('/api',api)
 
-server.listen(config.port,function(err){
+http.listen(config.port,function(err){
   if (err){
     console.log(err);
   }else{
