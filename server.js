@@ -23,6 +23,7 @@ var router = express();
 var server = http.createServer(router);
 var io = socketio.listen(server);
 
+console.log(__dirname+'/client/app/views/index.html');
 
 
  
@@ -46,7 +47,7 @@ router.get('*',function(req, res){
   res.sendFile(__dirname+'/client/app/views/index.html');
 })
 
-var api = require('./app/routes/api')(router,express);
+var api = require('./app/routes/api')(router,express,io);
 router.use('/api',api)
 
 server.listen(config.port,function(err){
