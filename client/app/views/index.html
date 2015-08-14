@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html ng-app="UserStoryApp">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">	
+    <base href='/'></base>
+	<title>MEAN Stack</title>
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+	
+	<!-- Any other user or page specific stylesheet go here-->
+	
+</head>
+
+<body ng-controller="MainController as main">
+	<div class="navbar navbar-default">
+		<div class="container">
+			<div class="navbar-header">
+				<a href="/" class="navbar-brand"><span class="glyphicon glyphicon-book"><span>User Story</a>
+			</div>
+
+			<ul class="nav navbar-nav">
+				<li><a href="/users">User</a></li>
+			</ul>
+
+			<ul class="nav navbar-nav navbar-right">
+				<li ng-if="!main.loggedIn"><a href="/login">Login</a></li>
+				<li ng-if="!main.loggedIn"><a href="/signup">Sign Up</a></li>
+				<li ng-if="main.loggedIn"><a href="#">Hello {{main.user.name}}</a></li>
+				<li ng-if="main.loggedIn"><a href="#" ng-click="main.doLogout()">Log out</a></li>
+			</ul>	
+
+		</div>
+	</div>		
+	<div class="page-header">
+		<h1>WELCOME TO MEANSTACK</h1>
+	</div>
+	<div ng-view>
+		
+	</div>
+
+
+	<!-- Script loading here at the end of the page . DO NOT PUT ANY PAGE RENDER CONTENT BELOW THIS!! -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+	<!-- Any other user or page specific script go here-->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.15/angular.min.js"></script>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.15/angular-route.min.js"></script>
+	<!-- real time here-->
+	<script type="text/javascript" src="/socket.io/socket.io.js"></script>
+
+	<!--Service-->
+	<script type="text/javascript" src="app/service/authService.js"></script>
+	<script type="text/javascript" src="app/service/storyService.js"></script>
+	<script type="text/javascript" src="app/service/user.js"></script>
+
+	<!--Directive here-->
+	<script type="text/javascript" src="app/directive/reverse.js"></script>			
+
+	<!--Controller-->	
+	<script type="text/javascript" src="app/controller/mainCtrl.js"></script>
+	<script type="text/javascript" src="app/controller/userCtrl.js"></script>
+	<script type="text/javascript" src="app/controller/storyCtrl.js"></script>
+	
+	<!--Route-->
+	<script type="text/javascript" src="app/app.routes.js"></script>	
+
+	<!--Main controller-->
+	<script type="text/javascript" src="app/app.js"></script>
+
+
+</body>
+</html>

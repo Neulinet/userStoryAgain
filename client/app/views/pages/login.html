@@ -1,0 +1,15 @@
+<div class="container" ng-controller="MainController as login">
+	<form  method="post" ng-submit="login.doLogin()"> 
+
+			<label for="username">Username</label>
+			<input type="text" name="username" ng-model="login.loginData.username">
+
+			<label for="username">Password</label>
+
+			<input type="password" name="password" ng-model="login.loginData.password">
+
+			<button type="submit" class="btn btn-success" id="submit"> Log in</button>
+
+	</form>
+</div>
+

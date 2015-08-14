@@ -1,0 +1,20 @@
+<div class="row">
+
+	<div class="col-md-4"> <!-- controller injected in the route, don't to specify this anymore-->
+		
+		<div class="row">
+
+			<div class="panel panel-success">
+				<div class="panel-heading"><h3>All Stories from every user</h3></div>
+				<div class="panel-body" ng-repeat="aStory in allStories.stories | reverse">
+					<li>{{aStory.content}}</li>
+				</div>	
+
+			</div>
+
+		</div>
+	
+	</div>
+
+
+</div>
